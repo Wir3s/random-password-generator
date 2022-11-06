@@ -1,23 +1,17 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
-
-
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+ //  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+ //  passwordText.value = password;
 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
 
 
 // My code:
@@ -105,15 +99,18 @@ possibleCharacters = possibleCharacters.concat(lowerOptions, upperOptions);
 
 var cookupPass = function() {
   let i = 0; 
+  let str ="";
   do {
   var index = Math.floor(Math.random() * possibleCharacters.length);
   var newPass = possibleCharacters[index];
+  str += newPass;
   i++;
-  console.log (newPass);
   } while (i < passwordLength);
- return newPass;
-}
-  
+ var passwordText = document.querySelector("#password");
+ passwordText.value = str;
+};
+
 cookupPass();
 
 }
+
