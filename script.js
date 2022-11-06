@@ -67,25 +67,43 @@ passwordSpecial = window.confirm("Click ok if you want special characters");
 
 console.log (passwordSpecial);
 
-if (!lowerOptions && !upperOptions && !numberOptions && !specialOptions) {
 
-  window.prompt("You must choose at least one option!");
-}
+
 
 // Create array based on boolean responses
 
 var possibleCharacters = [];
-if (passwordLower) {
+if (passwordLower && !passwordUpper && !passwordNumbers && !passwordSpecial) {
 possibleCharacters = possibleCharacters.concat(lowerOptions);
-} else if (passwordUpper) {
-possibleCharacters = possibleCharacters.concat(upperOptions);
-} else if (passwordNumbers) {
-  possibleCharacters = possibleCharacters.concat(numberOptions);
-} else if (passwordSpecial) {
+} else if (passwordLower && passwordUpper && !passwordNumbers && !passwordSpecial) {
+possibleCharacters = possibleCharacters.concat(lowerOptions, upperOptions);
+} else if (passwordLower && passwordUpper && passwordNumbers && !passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(lowerOptions, upperOptions, numberOptions);
+} else if (passwordLower && passwordUpper && passwordNumbers && passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(lowerOptions, upperOptions, numberOptions, specialOptions);
+} else if (passwordLower && !passwordUpper && passwordNumbers && passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(upperOptions, numberOptions, specialOptions);
+} else if (passwordLower && !passwordUpper && !passwordNumbers && passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(lowerOptions, specialOptions);
+} else if (passwordLower && !passwordUpper && passwordNumbers && !passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(lowerOptions, numberOptions);
+} else if (!passwordLower && passwordUpper && passwordNumbers && passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(upperOptions, numberOptions, specialOptions);
+} else if (!passwordLower && passwordUpper && !passwordNumbers && passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(upperOptions, specialOptions);
+} else if (!passwordLower && passwordUpper && passwordNumbers && !passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(upperOptions, numberOptions);
+} else if (!passwordLower && !passwordUpper && passwordNumbers && passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(numberOptions, specialOptions);
+} else if (!passwordLower && !passwordUpper && !passwordNumbers && passwordSpecial) {
   possibleCharacters = possibleCharacters.concat(specialOptions);
+} else if (!passwordLower && !passwordUpper && passwordNumbers && !passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(numberOptions);
+} else {
+  window.prompt("You must choose at least one option!");
 }
 
-// Generation of password, works with a single true value
+// Generation of password
 
 
 var cookupPass = function() {
