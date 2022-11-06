@@ -63,8 +63,8 @@ firstAttempt();
 /* Need a way to add arrays if they are true
 
 var buildArray = function() {
-  if passwordLower = true; {
-    newArray = passwordLower;
+  if (passwordLower === true && passwordUpper === true && passwordNumbers === true && passwordSpecial === true) {
+    newArray = passwordLower.concat(upperOptions, numberOptions, specialOptions);
   }
 }
 
@@ -92,7 +92,12 @@ console.log (passwordSpecial);
 
 */
 
+/* require at least one to be true
 
+if (!lowerOptions && !upperOptions && !numberOptions && !specialOptions) {
+
+  window.prompt("You must choose at least one option!");
+}
     
   
    
