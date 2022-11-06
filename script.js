@@ -21,7 +21,7 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // My code:
-
+function generatePassword () {
 
 // Arrays of possible character types to include
 
@@ -116,3 +116,4 @@ var cookupPass = function() {
   
 cookupPass();
 
+}
