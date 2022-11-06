@@ -47,15 +47,52 @@ console.log (passwordLength);
 
 passwordLower = window.confirm("Click ok if you want lowercase letters");
 
-// Generation of password, works with lowercase as-is, need to concat arrays
+console.log (passwordLower);
 
-// loweroptions will have to change to new array name
+// Ask if uppercase letters are desired
+
+passwordUpper = window.confirm("Click ok if you want uppercase letters");
+
+console.log (passwordUpper);
+
+// Ask if numbers are desired
+
+passwordNumbers = window.confirm("Click ok if you want numbers");
+
+console.log (passwordNumbers);
+
+// Ask if special characters are desired
+
+passwordSpecial = window.confirm("Click ok if you want special characters");
+
+console.log (passwordSpecial);
+
+if (!lowerOptions && !upperOptions && !numberOptions && !specialOptions) {
+
+  window.prompt("You must choose at least one option!");
+}
+
+// Create array based on boolean responses
+
+var possibleCharacters = [];
+if (passwordLower) {
+possibleCharacters = possibleCharacters.concat(lowerOptions);
+} else if (passwordUpper) {
+possibleCharacters = possibleCharacters.concat(upperOptions);
+} else if (passwordNumbers) {
+  possibleCharacters = possibleCharacters.concat(numberOptions);
+} else if (passwordSpecial) {
+  possibleCharacters = possibleCharacters.concat(specialOptions);
+}
+
+// Generation of password, works with a single true value
+
 
 var cookupPass = function() {
   let i = 0; 
   do {
-  var index = Math.floor(Math.random() * lowerOptions.length);
-  var newPass = lowerOptions[index];
+  var index = Math.floor(Math.random() * possibleCharacters.length);
+  var newPass = possibleCharacters[index];
   i++;
   console.log (newPass);
   } while (i < passwordLength);
@@ -63,50 +100,4 @@ var cookupPass = function() {
 }
   
 cookupPass();
-
-
-/* Need a way to add arrays if they are true
-
-var buildArray = function() {
-  if (passwordLower === true && passwordUpper === true && passwordNumbers === true && passwordSpecial === true) {
-    newArray = passwordLower.concat(upperOptions, numberOptions, specialOptions);
-  }
-}
-
-*/
-
-
-
-// The other variable options, add these in when above is working! 
-
-/*
-
-
-
-passwordUpper = window.confirm("Click ok if you want uppercase letters");
-
-console.log (passwordUpper);
-
-passwordNumbers = window.confirm("Click ok if you want numbers");
-
-console.log (passwordNumbers);
-
-passwordSpecial = window.confirm("Click ok if you want special characters");
-
-console.log (passwordSpecial);
-
-*/
-
-//  require at least one to be true
-
-/*
-
-if (!lowerOptions && !upperOptions && !numberOptions && !specialOptions) {
-
-  window.prompt("You must choose at least one option!");
-}
-    
-*/
-   
-
 
