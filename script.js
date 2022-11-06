@@ -60,6 +60,17 @@ var firstAttempt = function() {
 firstAttempt();
 
 
+/* Need a way to add arrays if they are true
+
+var buildArray = function() {
+  if passwordLower = true; {
+    newArray = passwordLower;
+  }
+}
+
+*/
+
+
 
 // The other variable options, add these in when above is working! 
 
@@ -81,9 +92,7 @@ console.log (passwordSpecial);
 
 */
 
-if (lowerOptions === true || upperOptions === true || numberOptions === true || specialOptions === true) {
-  
-}
+
     
   
    
