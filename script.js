@@ -23,14 +23,14 @@ generateBtn.addEventListener("click", writePassword);
 // My code:
 
 
-
+// Arrays of possible character types to include
 
 var lowerOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperOptions = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numberOptions = ['0','1','2','3','4','5','6','7','8','9'];
-var specialOptions = ['&','$','!','@']
+var specialOptions = ['&','$','!','@'];
 
-
+// Ask for desired character length
 
 passwordLength = window.prompt("How many characters?");
 
@@ -43,13 +43,18 @@ passwordLength = window.prompt("How many characters?");
   
 console.log (passwordLength);
 
+// Ask if lowercase letters are desired
 
 passwordLower = window.confirm("Click ok if you want lowercase letters");
 
-var firstAttempt = function() {
+// Generation of password, works with lowercase as-is, need to concat arrays
+
+// loweroptions will have to change to new array name
+
+var cookupPass = function() {
   let i = 0; 
   do {
-  var index = Math.floor(Math.random() * 26);
+  var index = Math.floor(Math.random() * lowerOptions.length);
   var newPass = lowerOptions[index];
   i++;
   console.log (newPass);
@@ -57,7 +62,7 @@ var firstAttempt = function() {
  return newPass;
 }
   
-firstAttempt();
+cookupPass();
 
 
 /* Need a way to add arrays if they are true
@@ -76,7 +81,7 @@ var buildArray = function() {
 
 /*
 
-console.log (passwordLower);
+
 
 passwordUpper = window.confirm("Click ok if you want uppercase letters");
 
@@ -92,14 +97,16 @@ console.log (passwordSpecial);
 
 */
 
-/* require at least one to be true
+//  require at least one to be true
+
+/*
 
 if (!lowerOptions && !upperOptions && !numberOptions && !specialOptions) {
 
   window.prompt("You must choose at least one option!");
 }
     
-  
+*/
    
 
 
