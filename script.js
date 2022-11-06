@@ -38,8 +38,7 @@ passwordLength = window.prompt("How many characters?");
   window.prompt("Please choose a number 8 or larger");
 } else if (passwordLength > 128) {
   window.prompt("Please choose a number 128 or less");
-  
-} 
+  } 
   
 console.log (passwordLength);
 
@@ -66,8 +65,6 @@ console.log (passwordNumbers);
 passwordSpecial = window.confirm("Click ok if you want special characters");
 
 console.log (passwordSpecial);
-
-
 
 
 // Create array based on boolean responses
