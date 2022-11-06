@@ -44,18 +44,19 @@ passwordLength = window.prompt("How many characters?");
 console.log (passwordLength);
 
 
-
-
 passwordLower = window.confirm("Click ok if you want lowercase letters");
 
 var firstAttempt = function() {
-
+  let i = 0; 
+  do {
   var index = Math.floor(Math.random() * 26);
   var newPass = lowerOptions[index];
-  for(var i=0; i < passwordLength; i++) {
-  console.log (newPass[i]);
+  i++;
+  console.log (newPass);
+  } while (i < passwordLength);
+ return newPass;
 }
-}
+  
 firstAttempt();
 
 
