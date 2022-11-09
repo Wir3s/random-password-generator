@@ -1,11 +1,11 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
+// Determine password length
 function getLength(){
   var tempPassword = prompt("How many characters would you like your password to be?")
   if(tempPassword < 8 || tempPassword >128 || isNaN(tempPassword)){
-    alert("YO dude enter a character between 8 and 128")
+    alert("Enter a character between 8 and 128")
     var tryAgain = confirm("Do you want to enter the number again?")
     if(!tryAgain){
       return 0
@@ -14,7 +14,8 @@ function getLength(){
   }
   return tempPassword
   }
-//
+
+// Function containing array options and character choices
 
 function getCharType(){
   // Arrays of possible character types to include
@@ -23,6 +24,8 @@ function getCharType(){
   var numberOptions = ['0','1','2','3','4','5','6','7','8','9'];
   var specialOptions = ['&','$','!','@'];
   var possibleCharacters = [];
+
+  // Ask if lowercase letters are desired
   passwordLower = window.confirm("Click ok if you want lowercase letters");
   if(passwordLower){
     possibleCharacters = possibleCharacters.concat(lowerOptions)
@@ -45,40 +48,32 @@ function getCharType(){
   if(passwordSpecial){
     possibleCharacters = possibleCharacters.concat(specialOptions)
   }
+
+  // Check at least one character type was selected 
   if(possibleCharacters.length === 0){
-    alert("YO dude you need to select at least one character type")
+    alert("You need to select at least one character type")
     var tryAgain = confirm("Do you want to enter the prompts again?")
     if(!tryAgain){
       return 0
     } 
     return getCharType()
   }
-  // Create array based on boolean responses
+  
   return possibleCharacters
 }
 
-
-
-
-// Write password to the #password input
-
-
-
-// My code (It's one giant function...):
+// If user cancels process, end. Otherwise, generate and write password
 
 function generatePassword () {
-  console.log('generating password function')
-// Ask for desired character length
 passwordLength = getLength()
 if(passwordLength === 0){
-  alert("Thanks for using our app!")
+  alert("Thanks for using the password generator!")
   return
 }
 
 var passwordBase = getCharType()
-console.log("entering generatePassword again", passwordBase)
 if(passwordBase === 0){
-  alert("Thanks for using our app!")
+  alert("Thanks for using the password generator!")
   return
 }
 var passwordStr = cookupPass(passwordLength, passwordBase)
@@ -86,19 +81,14 @@ return passwordStr
 }
 
 function writePassword() {
-  console.log("writing password")
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
 
 
-
-// Generation of password
+// Generation of random password
 var cookupPass = function(characterCount, characterBase) {
-  console.log("in the kitchen")
-  console.log(characterCount)
-  console.log(characterBase)
   let i = 0; 
   let str ="";
   do {
