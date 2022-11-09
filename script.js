@@ -28,11 +28,13 @@ var specialOptions = ['&','$','!','@'];
 
 passwordLength = window.prompt("How many characters?");
 
-  if (passwordLength < 8) {
-  window.prompt("Please choose a number 8 or larger");
-} else if (passwordLength > 128) {
+  if (passwordLength < 8 || passwordLength > 128) {
+  window.prompt("Please choose a number between 8 and 128");
+/* } else if (passwordLength > 128) {
   window.prompt("Please choose a number 128 or less");
-  } 
+*/ 
+} 
+ 
   
 console.log (passwordLength);
 
