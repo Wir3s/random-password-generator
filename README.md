@@ -2,7 +2,7 @@
 
 ## Description
 
-Generates a random password based on user criteria. The user can choose a character length betwee 8 and 128, and whether to include lowercase letters, uppercase letters, numbers and special characters. At least one of those four criteria must be selected.
+Generates a random password based on user criteria. The user can choose a character length between 8 and 128, and whether to include lowercase letters, uppercase letters, numbers and special characters. At least one of those four criteria must be selected.
 
 ## Installation
 
