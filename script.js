@@ -1,118 +1,114 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
- //  var passwordText = document.querySelector("#password");
 
- //  passwordText.value = password;
+function getLength(){
+  var tempPassword = prompt("How many characters would you like your password to be?")
+  if(tempPassword < 8 || tempPassword >128 || isNaN(tempPassword)){
+    alert("YO dude enter a character between 8 and 128")
+    var tryAgain = confirm("Do you want to enter the number again?")
+    if(!tryAgain){
+      return 0
+    } 
+    return getLength()
+  }
+  return tempPassword
+  }
+//
 
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
-// My code:
-function generatePassword () {
-
-// Arrays of possible character types to include
-
-var lowerOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperOptions = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var numberOptions = ['0','1','2','3','4','5','6','7','8','9'];
-var specialOptions = ['&','$','!','@'];
-
-// Ask for desired character length
-
-passwordLength = window.prompt("How many characters?");
-
-  if (passwordLength < 8 || passwordLength > 128) {
-  window.prompt("Please choose a number between 8 and 128");
-/* } else if (passwordLength > 128) {
-  window.prompt("Please choose a number 128 or less");
-*/ 
-} 
- 
+function getCharType(){
+  // Arrays of possible character types to include
+  var lowerOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var upperOptions = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  var numberOptions = ['0','1','2','3','4','5','6','7','8','9'];
+  var specialOptions = ['&','$','!','@'];
+  var possibleCharacters = [];
+  passwordLower = window.confirm("Click ok if you want lowercase letters");
+  if(passwordLower){
+    possibleCharacters = possibleCharacters.concat(lowerOptions)
+  }
   
-console.log (passwordLength);
-
-// Ask if lowercase letters are desired
-
-passwordLower = window.confirm("Click ok if you want lowercase letters");
-
-console.log (passwordLower);
-
-// Ask if uppercase letters are desired
-
-passwordUpper = window.confirm("Click ok if you want uppercase letters");
-
-console.log (passwordUpper);
-
-// Ask if numbers are desired
-
-passwordNumbers = window.confirm("Click ok if you want numbers");
-
-console.log (passwordNumbers);
-
-// Ask if special characters are desired
-
-passwordSpecial = window.confirm("Click ok if you want special characters");
-
-console.log (passwordSpecial);
-
-
-// Create array based on boolean responses
-
-var possibleCharacters = [];
-if (passwordLower && !passwordUpper && !passwordNumbers && !passwordSpecial) {
-possibleCharacters = possibleCharacters.concat(lowerOptions);
-} else if (passwordLower && passwordUpper && !passwordNumbers && !passwordSpecial) {
-possibleCharacters = possibleCharacters.concat(lowerOptions, upperOptions);
-} else if (passwordLower && passwordUpper && passwordNumbers && !passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(lowerOptions, upperOptions, numberOptions);
-} else if (passwordLower && passwordUpper && passwordNumbers && passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(lowerOptions, upperOptions, numberOptions, specialOptions);
-} else if (passwordLower && !passwordUpper && passwordNumbers && passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(upperOptions, numberOptions, specialOptions);
-} else if (passwordLower && !passwordUpper && !passwordNumbers && passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(lowerOptions, specialOptions);
-} else if (passwordLower && !passwordUpper && passwordNumbers && !passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(lowerOptions, numberOptions);
-} else if (!passwordLower && passwordUpper && passwordNumbers && passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(upperOptions, numberOptions, specialOptions);
-} else if (!passwordLower && passwordUpper && !passwordNumbers && passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(upperOptions, specialOptions);
-} else if (!passwordLower && passwordUpper && passwordNumbers && !passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(upperOptions, numberOptions);
-} else if (!passwordLower && !passwordUpper && passwordNumbers && passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(numberOptions, specialOptions);
-} else if (!passwordLower && !passwordUpper && !passwordNumbers && passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(specialOptions);
-} else if (!passwordLower && !passwordUpper && passwordNumbers && !passwordSpecial) {
-  possibleCharacters = possibleCharacters.concat(numberOptions);
-} else {
-  window.prompt("You must choose at least one option!");
+  // Ask if uppercase letters are desired
+  passwordUpper = window.confirm("Click ok if you want uppercase letters");
+  if(passwordUpper){
+    possibleCharacters = possibleCharacters.concat(upperOptions)
+  }
+  
+  // Ask if numbers are desired
+  passwordNumbers = window.confirm("Click ok if you want numbers");
+  if(passwordNumbers){
+    possibleCharacters =possibleCharacters.concat(numberOptions)
+  }
+  
+  // Ask if special characters are desired
+  passwordSpecial = window.confirm("Click ok if you want special characters");
+  if(passwordSpecial){
+    possibleCharacters = possibleCharacters.concat(specialOptions)
+  }
+  if(possibleCharacters.length === 0){
+    alert("YO dude you need to select at least one character type")
+    var tryAgain = confirm("Do you want to enter the prompts again?")
+    if(!tryAgain){
+      return 0
+    } 
+    return getCharType()
+  }
+  // Create array based on boolean responses
+  return possibleCharacters
 }
+
+
+
+
+// Write password to the #password input
+
+
+
+// My code (It's one giant function...):
+
+function generatePassword () {
+  console.log('generating password function')
+// Ask for desired character length
+passwordLength = getLength()
+if(passwordLength === 0){
+  alert("Thanks for using our app!")
+  return
+}
+
+var passwordBase = getCharType()
+console.log("entering generatePassword again", passwordBase)
+if(passwordBase === 0){
+  alert("Thanks for using our app!")
+  return
+}
+var passwordStr = cookupPass(passwordLength, passwordBase)
+return passwordStr
+}
+
+function writePassword() {
+  console.log("writing password")
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
+}
+
+
 
 // Generation of password
-
-
-var cookupPass = function() {
+var cookupPass = function(characterCount, characterBase) {
+  console.log("in the kitchen")
+  console.log(characterCount)
+  console.log(characterBase)
   let i = 0; 
   let str ="";
   do {
-  var index = Math.floor(Math.random() * possibleCharacters.length);
-  var newPass = possibleCharacters[index];
+    var index = Math.floor(Math.random() * characterBase.length);
+  var newPass = characterBase[index];
   str += newPass;
   i++;
-  } while (i < passwordLength);
- var passwordText = document.querySelector("#password");
- passwordText.value = str;
+} while (i < characterCount);
+return str
 };
 
-cookupPass();
-
-}
-
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
