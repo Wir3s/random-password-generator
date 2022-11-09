@@ -10,7 +10,8 @@ N/A
 
 ## Usage
 
-To use, simply visit: 
+To use, simply visit: https://wir3s.github.io/random-password-generator/
+
 Click the generate password button, select number of characters and desired criteria.
 
 ![Screentshot:](https://github.com/Wir3s/random-password-generator/blob/main/assets/images/password-generator-screenshot.png)
