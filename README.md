@@ -13,6 +13,8 @@ N/A
 To use, simply visit: 
 Click the generate password button, select number of characters and desired criteria.
 
+Screentshot:https://github.com/Wir3s/random-password-generator/blob/main/assets/images/password-generator-screenshot.png
+
 ## Credit
 
 An instructional tutor, Alexis Gonzalez, was exceedingly helpful in the final stages of the project providing a recommendation for cleaner, simpler arrays and a way to call them, as well as better utilization of functions.
